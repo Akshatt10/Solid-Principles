@@ -49,6 +49,10 @@ class PaypalProcessor implements IPaymentProcessor {
     }
 }
 
+//Creating a new class for the new requirement without modifying the existing main fucnntion code.
+// This is the new payment method that we are adding.
+// This is an example of the Open/Closed Principle (OCP) in action, where we can add new payment methods without modifying the existing code.
+
 class DebitCardProcessor implements IPaymentProcessor{
     processPayment(amount: number): void {
         console.log(`Processing debit card payment of ${amount}`);
@@ -59,6 +63,6 @@ class DebitCardProcessor implements IPaymentProcessor{
 const creditCardProcessor = new CreditCardProcessor();
 const paypalProcessor = new PaypalProcessor();
 const debitCardProcessor = new DebitCardProcessor();
-const processor = new PaymentProcessor(paypalProcessor);
+const processor = new PaymentProcessor(debitCardProcessor);
 
 processor.processPayment(20);
